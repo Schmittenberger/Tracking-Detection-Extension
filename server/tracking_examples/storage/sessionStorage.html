@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sessionStorage Prototype</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+
+a,div,h1,h3{
+font-size:20px;
+}
+
+}
+
+</style>
+
+
+</head>
+<body onload="">
+<h1> sessionStorage Prototype</h1>
+<span>sessionStorage maintains a separate storage area for each given origin that's available for the duration of the page session (as long as the browser is open, including page reloads and restores) - </span>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">detailed reference </a> <br>
+
+
+
+
+
+<script type="text/javascript">
+sessionStorage.setItem('Uni', 'OvGU');
+sessionStorage.setItem('Note', '1.0');
+sessionStorage.setItem('Shirt', 'red');
+//the following two methods of setting items are not recommended, but may still happen in real life
+sessionStorage.name = "Paul";
+sessionStorage['colorSetting'] = '#a4509b';
+
+console.log(sessionStorage.getItem('Uni'));
+console.log("clean methoed " + sessionStorage.getItem('Note'));
+console.log("unclean method: " + sessionStorage.Note);
+
+sessionStorage.removeItem('Shirt');
+//sessionStorage.clear();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Motion Event Prototype
+</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+h3,span,div,a{
+font-size:15px;
+}
+}
+</style>
+</head>
+<body onLoad="">
+<h1>Motion Event Prototype</h1>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent">reference </a> <br>
+<br>
+<div id="insert">n.a.</div>
+<script type="text/javascript">
+
+window.addEventListener('devicemotion', function(event) {
+  console.log(event.acceleration.x);
+  document.getElementById("insert").innerHTML =event.acceleration.x;
+});
+
+
+</script>
+</body>
+</html>

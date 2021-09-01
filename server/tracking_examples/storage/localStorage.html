@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>localStorage Prototype</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+
+a,div,h1,h3{
+font-size:20px;
+}
+
+}
+
+</style>
+
+
+</head>
+<body onload="">
+<h1> localStorage Prototype</h1>
+<span>localStorage persists even when the browser is closed and re-opened - </span>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">brief reference </a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">detailed reference </a> <br>
+
+
+
+<script type="text/javascript">
+//setting items in localStorage
+localStorage.setItem('Uni2', 'OvGU');
+localStorage.setItem('Note2', '1.0');
+localStorage.setItem('Shirt2', 'red');
+//the following two methods of setting items are not recommended, but may still happen in real life
+localStorage.name = "Paul2";
+localStorage['colorSetting'] = '#a4509b';
+
+console.log(localStorage.getItem('Uni2'));
+console.log("clean methoed " + localStorage.getItem('Note2'));
+console.log("unclean method: " + localStorage.Note2);
+/*
+localStorage.removeItem('Shirt');
+localStorage.clear();
+*/
+</script>
+</body>
+</html>

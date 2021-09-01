@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fingerprint Prototype
+</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+
+a,div,h1,h3{
+font-size:20px;
+}
+
+}
+
+</style>
+
+<script type="text/javascript">
+
+
+	//based on https://browserleaks.com/canvas#how-does-it-work
+function fingerprint(c){
+	//c is a canvas element
+
+	//var c = document.getElementById("canvas1");
+	var ctx = c.getContext("2d");
+	var txt = "Magdeburg,ovgu <canvas> 3.0";
+	ctx.textBaseline = "top";
+	// The most common type
+	ctx.font = "14px 'Times New Roman'";
+	ctx.textBaseline = "alphabetic";
+	ctx.fillStyle = "#afa";
+	ctx.fillRect(125,1,62,20);
+	ctx.fillStyle = "#0ff";
+	ctx.fillRect(10,3,40,20);
+	// Some tricks for color mixing to increase the difference in rendering
+	ctx.fillStyle = "#069";
+	ctx.fillText(txt, 2, 15);
+	ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
+	ctx.fillText(txt, 4, 17);
+	
+	//test if getImageData is detected
+	ctx.getImageData(10, 10, 50, 50);
+	
+	var dataURL = document.getElementById("cDataURL");
+	dataURL.innerHTML = c.toDataURL()
+	
+	var dataURL = document.getElementById("cDataLength");
+	dataURL.innerHTML = c.toDataURL().length;
+	c.toBlob(function(){});
+	
+
+}
+function createAndFingerPrint(){
+var createdCanvas = document.createElement("canvas");
+	createdCanvas.id = "createdCa"
+	document.getElementById("canvasInsert").append(createdCanvas);
+	fingerprint(document.getElementById('createdCa'))
+}
+
+</script>
+</head>
+<!--body onLoad="fingerprint(document.getElementById('canvas1'))"-->
+<body onLoad="createAndFingerPrint()">
+<h1> Fingerprint Prototype</h1>
+<br>
+<!--canvas id="canvas1">Fingerprint Prototype</canvas-->
+<div id="canvasInsert">-1-</div>
+<h3> Canvas toDataURL():</h3>
+<div id="cDataLength">0</div>
+<div id="cDataURL">---</div>
+
+</div>

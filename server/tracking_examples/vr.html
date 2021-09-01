@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WebVR Prototype</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+
+a,div,h1,h3{
+font-size:20px;
+}
+
+}
+
+</style>
+
+
+</head>
+<body onload="">
+<h1> WebVR Prototype</h1>
+<a href="https://developers.google.com/web/fundamentals/vr/getting-started-with-webvr/">google dev reference </a><br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/"> WebXR reference </a><br>
+The tested code is from the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API/">depreciated WebVR standard</a>. <br>
+it works under firefox but not chrome
+
+
+
+<script type="text/javascript">
+//https://developers.google.com/web/fundamentals/vr/getting-started-with-webvr/
+navigator.getVRDisplays().then(displays => {
+  // Filter down to devices that can present.
+  displays = displays.filter(display => display.capabilities.canPresent);
+
+  // If there are no devices available, quit out.
+  if (displays.length === 0) {
+    console.warn('No devices available able to present.');
+    return;
+  }
+
+  // Store the first display we find. A more production-ready version should
+  // allow the user to choose from their available displays.
+  this._vr.display = displays[0];
+  this._vr.display.depthNear = DemoVR.CAMERA_SETTINGS.near;
+  this._vr.display.depthFar = DemoVR.CAMERA_SETTINGS.far;
+});
+
+
+
+</script>
+</body>
+</html>

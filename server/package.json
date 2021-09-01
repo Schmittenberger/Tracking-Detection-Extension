@@ -1,0 +1,27 @@
+{
+  "name": "js-tracking-listener-server",
+  "version": "1.0.0",
+  "description": "Node.js server acting as an endpoint for a javaascript tracking extension",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	 "start": "nodemon app"
+  },
+  "author": "Lukas Schmidt",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http-auth": "^4.1.2",
+    "https": "^1.0.0",
+    "mongodb": "^3.6.9",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.12",
+    "request": "^2.88.2",
+    "request-ip": "^2.1.3",
+    "request-promise": "^4.2.6",
+    "ws": "^7.5.2"
+  }
+}

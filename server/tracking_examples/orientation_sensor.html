@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Absolute Orientation Api Prototype
+</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+</head>
+<body onLoad="">
+<h1> Absolute Orientation Prototype</h1>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor">reference </a>
+<br>
+<h3> Note that Absolute Orientation is not supported in firefox but still available in chrome</h3>
+<div id="insert">n.a.</div>
+<div id="insert2">n.a.</div>
+
+
+
+
+<script type="text/javascript">
+
+if(AbsoluteOrientationSensor()) console.log("AbsoluteOrientationSensor available");
+
+//const sensor = new AbsoluteOrientationSensor();
+const options = { frequency: 60, referenceFrame: 'device' };
+			const sensor = new AbsoluteOrientationSensor(options);
+
+			sensor.addEventListener('reading', () => {
+			  // model is a Three.js object instantiated elsewhere.
+			  var x = model.quaternion.fromArray(sensor.quaternion).inverse();
+			  console.log(x);
+			  document.getElementById("insert").innerHTML = x;
+			});
+			sensor.addEventListener('error', error => {
+			  if (event.error.name == 'NotReadableError') {
+				console.log("Sensor is not available.");
+				  	document.getElementById("insert2").innerHTML = "Sensor is not available.";
+			
+			  }
+			});
+		   
+		   sensor.start();
+
+
+Promise.all([navigator.permissions.query({ name: "accelerometer" }),
+             navigator.permissions.query({ name: "magnetometer" }),
+             navigator.permissions.query({ name: "gyroscope" })])
+       .then(results => {
+         if (results.every(result => result.state === "granted")) {
+           
+		   const options = { frequency: 60, referenceFrame: 'device' };
+			const sensor2 = new AbsoluteOrientationSensor(options);
+
+			sensor2.addEventListener('reading', () => {
+			  // model is a Three.js object instantiated elsewhere.
+			  var x = model.quaternion.fromArray(sensor2.quaternion).inverse();
+			  console.log(x);
+			  document.getElementById("insert").innerHTML = x;
+			});
+			sensor2.addEventListener('error', error => {
+			  if (event.error.name == 'NotReadableError') {
+				console.log("Sensor is not available.");
+				  	document.getElementById("insert2").innerHTML = "Sensor is not available.";
+			
+			  }
+			});
+		   
+		   sensor2.start();
+           
+         } else {
+			document.getElementById("insert2").innerHTML = "No permissions to use AbsoluteOrientationSensor.";
+           console.log("No permissions to use AbsoluteOrientationSensor.");
+         }
+   });
+</script>
+</body>
+</html>

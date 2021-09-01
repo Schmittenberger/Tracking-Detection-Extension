@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gyroscope Prototype
+</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+
+span{
+font-size:20px;
+}
+
+}
+
+
+
+</style>
+
+</head>
+<body>
+<h1>Gyroscope Prototype</h1>
+
+
+<div><span> Angular velocity along the X-axis: </span><span id="insert">n.a.</span></div>
+<div><span> Angular velocity along the Y-axis: </span><span id="insert2">n.a.</span></div>
+<div><span> Angular velocity along the Z-axis: </span><span id="insert3">n.a.</span></div>
+<div><span> Browser Support: </span><span id="insert4">n.a.</span></div>
+
+<br>
+
+<span> only works on devices with a gyroscope, in secure contexts (HTTPS) and not in firefox</span>
+<script type="text/javascript">
+
+window.navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]);
+
+if((typeof Gyroscope  === "function")){
+	var g = new Gyroscope({frequency: 20}).start;
+	Object.defineProperty(Gyroscope, "start", {
+	//get() { handleDetection("Gyroscope.x");return 0.3}
+	"value": function () {
+	  alert("x");  
+	  console.log("constrcutor call!");
+	  return g;
+	}
+	});
+	
+	/*
+	Object.defineProperty(Gyroscope, "activated", {
+	//get() { handleDetection("Gyroscope.x");return 0.3}
+	get(){console.log("got gyro active");return true;}
+	});*/
+
+document.getElementById("insert4").innerHTML = "yes";
+let gyroscope = new Gyroscope({frequency: 2});
+console.log(gyroscope.activated);
+  console.log("Angular velocity along the X-axis " + gyroscope.x);
+  document.getElementById("insert").innerHTML = gyroscope.x
+  console.log("Angular velocity along the Y-axis " + gyroscope.y);
+  document.getElementById("insert2").innerHTML = gyroscope.y
+  console.log("Angular velocity along the Z-axis " + gyroscope.z);
+  document.getElementById("insert3").innerHTML = gyroscope.z
+  
+gyroscope.addEventListener('reading', e => {
+  //console.log("Angular velocity along the X-axis " + gyroscope.x);
+  document.getElementById("insert").innerHTML = gyroscope.x
+  //console.log("Angular velocity along the Y-axis " + gyroscope.y);
+  document.getElementById("insert2").innerHTML = gyroscope.y
+  //console.log("Angular velocity along the Z-axis " + gyroscope.z);
+  document.getElementById("insert3").innerHTML = gyroscope.z
+});
+gyroscope.start();
+} else{
+document.getElementById("insert4").innerHTML = "no";
+}
+//console.log("site getting screen: " + screen.orientation.type)
+
+</script>
+</body>
+</html>

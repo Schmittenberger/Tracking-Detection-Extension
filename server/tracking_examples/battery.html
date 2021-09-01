@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Battery Api Prototype
+</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+h3,span,div,a{
+font-size:15px;
+}
+}
+</style>
+
+
+</head>
+<body onLoad="">
+<h1> Battery Api Prototype</h1>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API">reference </a>
+<br>
+<h3> Note that the battery api is depraciated but still available in chrome</h3>
+<div id="insert"></div>
+
+
+
+</div>
+
+<script type="text/javascript">
+	var data = document.getElementById("insert");
+	
+	
+
+if (typeof navigator.getBattery === "function") { 
+	navigator.getBattery().then(function(battery) {
+	  function updateAllBatteryInfo(){
+		updateChargeInfo();
+		updateLevelInfo();
+		updateChargingInfo();
+		updateDischargingInfo();
+	  }
+	  updateAllBatteryInfo();
+
+	  battery.addEventListener('chargingchange', function(){
+		updateChargeInfo();
+	  });
+	  function updateChargeInfo(){
+		console.log("Battery charging? "
+					+ (battery.charging ? "Yes" : "No"));
+	  }
+
+	  battery.addEventListener('levelchange', function(){
+		updateLevelInfo();
+	  });
+	  function updateLevelInfo(){
+	  var data = document.getElementById("insert");
+		data.innerHTML = battery.level * 100 + "%";
+		console.log("Battery level: "
+					+ battery.level * 100 + "%");
+	  }
+
+	  battery.addEventListener('chargingtimechange', function(){
+		updateChargingInfo();
+	  });
+	  function updateChargingInfo(){
+		console.log("Battery charging time: "
+					 + battery.chargingTime + " seconds");
+	  }
+
+	  battery.addEventListener('dischargingtimechange', function(){
+		updateDischargingInfo();
+	  });
+	  function updateDischargingInfo(){
+		console.log("Battery discharging time: "
+					 + battery.dischargingTime + " seconds");
+	  }
+
+	//}).catch(error => alert(error.message));
+	}).catch(function(error) {
+
+  document.getElementById("insert").innerHTML = "100%";
+
+})
+} else{
+	   document.getElementById("insert").innerHTML = "Battery api not available in this browser";
+		
+}
+</script>
+</body>
+</html>

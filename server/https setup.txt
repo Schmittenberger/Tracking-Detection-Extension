@@ -1,0 +1,3 @@
+certain tracking methods (like geolocation access) only work in secure contexts (https)
+if you want to test these methods locally you will have to create a self signed certificate for the node.js server
+https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTPS-server/

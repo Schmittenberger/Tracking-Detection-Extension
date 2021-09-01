@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Orientation Event Prototype
+</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+h3,span,div,a{
+font-size:15px;
+}
+}
+</style>
+</head>
+<body onLoad="">
+<h1>Orientation Event Prototype</h1>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Events/Detecting_device_orientation">reference </a> <br>
+<a href="https://yari-demos.prod.mdn.mozit.cloud/en-US/docs/Web/Events/Detecting_device_orientation/_samples_/Orientation_example">example </a>
+<br>
+
+<div id="insert">n.a.</div>
+<div id="insert2">n.a.</div>
+<div id="insert3">n.a.</div>
+<div id="insert4">n.a.</div>
+
+
+
+
+<script type="text/javascript">
+/*
+const elistener = window.addEventListener;
+Object.defineProperty(window, "addEventListener", {
+"value": function () {
+  console.log("added avent listener")
+  for(var i = 0; i< arguments.length;i++){
+	  console.log("getting arguments[" + i +"]: " + arguments[i]); //too much info right now
+  }
+  
+  return elistener.apply(this, arguments);
+  
+}
+}); 
+*/
+
+window.addEventListener("deviceorientation", handleOrientation, true);
+
+function handleOrientation(event) {
+  var absolute = event.absolute;
+  var alpha    = event.alpha;
+  var beta     = event.beta;
+  var gamma    = event.gamma;
+  
+  document.getElementById("insert").innerHTML = absolute;
+  document.getElementById("insert2").innerHTML = alpha;
+  document.getElementById("insert3").innerHTML = beta;
+  document.getElementById("insert4").innerHTML = gamma;
+
+  // Do stuff with the new orientation data
+}
+
+
+</script>
+</body>
+</html>

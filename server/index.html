@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tracking Prototypes</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+li{
+    color:grey;
+}
+a{
+    font-size:20px;
+}
+
+}
+#orderedList{
+    margin-left:-20px;
+}
+li{
+    padding-top:2px;
+}
+a{
+    	color:black;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1 style="display: inline-block;">
+Track the Tracker - The Current State of Web Tracking and its Potential Future
+</h1>
+<br>
+<div> Get information on a current crawl: <a href="/status">status</a>
+<h2>Tracking Prototypes</h2>
+<ol id="orderedList">
+
+
+<li><a href="/tracking_examples/geolocation.html"  >Geolocation </a></li>
+<li><a href="/tracking_examples/notifications.html"  >Notifications</a></li>
+
+<li><a href="/tracking_examples/battery.html"  >Battery API (Chrome) </a></li>
+
+<li><a href="/tracking_examples/orientation_event.html"  >Orientation Event API  </a></li>
+<li><a href="/tracking_examples/motion_event.html"  >Motion Event API  </a></li>
+
+
+<li><a href="/tracking_examples/cookies.html"  >Cookies</a></li>
+
+</ol>
+<h3>Fingerprinting Prototypes</h3>
+<li><a href="/tracking_examples/fingerprinting/canvas_fingerprint.html"  >Canvas Fingerprinter </a></li>
+<li><a href="/tracking_examples/fingerprinting/audio_fingerprint.html"  >Audio Fingerprinting</a></li>
+<li><a href="/tracking_examples/fingerprinting/webgl_fingerprint.html"  >WebGL Fingerprinting</a></li>
+<li><a href="/tracking_examples/fingerprinting/font_fingerprint.html"  >Font Fingerprinting</a></li>
+
+<h3>WIP Storage Prototypes</h3>
+<li><a href="/tracking_examples/storage/localStorage.html"  >localStorage</a></li>
+<li><a href="/tracking_examples/storage/indexDB.html"  >indexDB</a></li>
+<li><a href="/tracking_examples/storage/sessionStorage.html"  >sessionStorage</a></li>
+<li><a href="/tracking_examples/storage/cache.html"  >cache</a></li>
+
+
+
+<h4>Other Prototypes</h4>
+<li><a href="/tracking_examples/vr.html"  >webVR</a></li>
+<li><a href="/tracking_examples/touch.html"  >Touch Events</a></li>
+<li><a href="/tracking_examples/plugins.html">Plugin Enumeration</a></li> 
+
+
+<br>
+<!--
+Sensor API's that are not trackable yet by the extension because of the initiliasation using new Sensor({})
+<li><a href="/tracking_examples/ambient.html"  >Ambient Light API  </a></li>
+<li><a href="/tracking_examples/orientation_sensor.html"  >Absolute Orientation Sensor API  </a></li>
+<li><a href="/tracking_examples/gyro.html"  >Gyroscope API  </a></li>
+<li><a href="/tracking_examples/accelerometer.html"  >Accelerometer API  </a></li>
+
+are not very significant for tracking
+<li><a href="/tracking_examples/screen.html"  >screen endpoint  </a></li>
+<li><a href="/tracking_examples/window_size.html"  >Window Size </a></li-->
+</body>
+<script>
+setTimeout(function(){alert("You are not using the Tracking Detection Extension")},4000)
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Screen Prototype
+</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+
+a,div,h1,h3{
+font-size:20px;
+}
+
+}
+
+</style>
+
+
+</head>
+<body onload="resize()" onresize="resize()">
+<h1> Window Size Prototype</h1>
+
+
+<div><span> screen orientation: </span><span id="insert">n.a.</span></div>
+<div><span> pixel depth: </span><span id="insert2">n.a.</span></div>
+<div><span> color depth: </span><span id="insert2b">n.a.</span></div>
+<div><span> available Height: </span><span id="insert3">n.a.</span></div>
+<div><span> available Width: </span><span id="insert4">n.a.</span></div>
+<div><span>  screen Height: </span><span id="insert5">n.a.</span></div>
+<div><span>  screen Width: </span><span id="insert6">n.a.</span></div>
+
+
+
+<script type="text/javascript">
+		/*console.log("getting value")
+		//var _innerWidth = window.innerWidth;
+		var _innerWidth = Object.getOwnPropertyDescriptor(window, "innerWidth").get;
+		//console.log("got value")
+
+	
+	var scr = screen.orientation;
+	Object.defineProperty(screen, "orientation", {
+	get() { console.log("accessing screen");return scr},
+	"configurable": false
+	}); 
+*/
+function resize(){
+document.getElementById("insert").innerHTML = screen.orientation.type;
+document.getElementById("insert2").innerHTML = screen.pixelDepth;
+document.getElementById("insert2b").innerHTML = screen.colorDepth;
+document.getElementById("insert3").innerHTML = screen.availHeight;
+document.getElementById("insert4").innerHTML = screen.availWidth;
+document.getElementById("insert5").innerHTML = screen.height;
+document.getElementById("insert6").innerHTML = screen.width;
+//console.log("site getting screen: " + screen.orientation.type)
+}
+</script>
+</body>
+</html>

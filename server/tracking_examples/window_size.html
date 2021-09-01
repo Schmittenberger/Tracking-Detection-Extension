@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Window Size checker Prototype
+</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	a,div,h1,h3{
+font-size:20px;
+}
+}
+
+</style>
+
+
+</head>
+<body onload="resize()" onresize="resize()">
+<h1> Window Size Prototype</h1>
+
+
+<div><span> innerWidth:</span><span id="insert">n.a.</span></div>
+<div><span> innerHeight:</span><span id="insert2">n.a.</span></div>
+<div><span> outerWidth:</span><span id="insert3">n.a.</span></div>
+<div><span> outerHeight:</span><span id="insert4">n.a.</span></div>
+
+
+
+<script type="text/javascript">
+	/*const _innerWidth = Object.getOwnPropertyDescriptor(window, "innerWidth").get;
+	
+	Object.defineProperty(window, "innerWidth", {
+	get(){console.log("lol");return _innerWidth.apply()}
+	});*/  
+
+function resize(){
+document.getElementById("insert").innerHTML = window.innerWidth;
+document.getElementById("insert2").innerHTML = window.innerHeight;
+document.getElementById("insert3").innerHTML = window.outerWidth;
+document.getElementById("insert4").innerHTML = window.outerHeight;
+}
+</script>
+</body>
+</html>

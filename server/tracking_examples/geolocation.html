@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Geolocation Access Prototype</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+
+a{
+font-size:20px;
+}
+
+}
+
+</style>
+<script>
+
+
+function getLocation() {
+var x = document.getElementById("demo");
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+var x = document.getElementById("demo");
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+</head>
+<body onLoad="getLocation()">
+
+<p id="demo"></p>
+<span> only works in secure contexts (HTTPS), try <a href="https://html5.komplett.cc/code/chap_geolocation/simple.html"> this</a> if not using localhost</span>
+<span> and not in kiwi browser</span>
+
+
+</body>
+</html>

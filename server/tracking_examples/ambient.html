@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ambient Light Api Prototype
+</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+
+</head>
+<body onLoad="">
+<h1> Ambient Light Prototype</h1>
+
+<span> Note that the Ambient api is not supported in firefox and has to be manually enabled in chrome</span>
+<br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/AmbientLightSensor">reference </a>
+<br>
+<br>
+<div id="insert">n.a.</div>
+<div id="insert2">n.a.</div>
+
+
+
+</div>
+
+<script type="text/javascript">
+if ( 'AmbientLightSensor' in window ) {
+  const sensor = new AmbientLightSensor();
+  sensor.onreading = () => {
+	
+	var data = document.getElementById("insert");
+	data.innerHTML = sensor.illuminance
+    console.log('Current light level:', sensor.illuminance);
+  };
+  sensor.onerror = (event) => {
+  	var data = document.getElementById("insert2");
+	data.innerHTML = event.error.name
+    console.log(event.error.name, event.error.message);
+  };
+  sensor.start();
+} else{
+	var data = document.getElementById("insert");
+	data.innerHTML = "Your browser does not support the ambient light sensor";
+}
+
+</script>
+
+</body>
+</html>

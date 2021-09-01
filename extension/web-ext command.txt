@@ -1,0 +1,10 @@
+for phone connected via USB:
+web-ext run -t firefox-android --adb-device <DEVICE_NAME> --firefox-apk org.mozilla.firefox
+
+for local emulator:
+web-ext run -t firefox-android --adb-device emulator-5554 --firefox-apk org.mozilla.firefox
+web-ext run -t firefox-android --adb-device emulator-5554 --firefox-apk org.mozilla.fenix
+
+Change Permissions:
+adb shell pm grant org.mozilla.firefox android.permission.READ_EXTERNAL_STORAGE
+adb shell pm grant org.mozilla.firefox android.permission.WRITE_EXTERNAL_STORAGE

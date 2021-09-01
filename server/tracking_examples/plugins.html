@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Plugin Enumeration Prototype
+</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for them media queries --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+
+a,div,h1,h3{
+font-size:20px;
+}
+
+}
+
+</style>
+
+
+</head>
+<body onload="">
+<h1>Plugin Enumeration Prototype</h1>
+<p> This feature is deprecated.</p>
+
+<div id="output"></div>
+
+<script type="text/javascript">
+//https://stackoverflow.com/questions/5188908/detecting-installed-plugins-under-different-browsers
+var x=navigator.plugins.length; // store the total number of plugin 
+var txt="Number of plugins installed: "+x+"<br/>";
+txt+="Installed plugins are->"+"<br/>";
+for(var i=0;i<x;i++)
+{
+  txt+=navigator.plugins[i].name + "<br/>"; 
+}
+document.getElementById("output").innerHTML=txt;
+console.log("--")
+console.log(navigator.plugins.length);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crawl Status</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- this is for media queries (handle different screen sizes) --->
+<style>
+@media screen and (max-width: 1170px) {
+	
+li{
+	color:grey;
+}
+
+a{
+	font-size:20px;
+}
+
+}
+
+#orderedList{
+	margin-left:-20px;
+}
+
+li{
+	padding-top:2px;
+}
+
+a{
+	color:black;
+}
+
+.paddingMobile{
+	padding:5px 8px;
+	margin:5px;
+}
+
+.container{
+	background-color:white;
+	margin:5px;
+	width:auto;
+	position: relative;
+	box-shadow:  3px 5px 10px 2px rgba(6, 6, 13, 0.5);
+	-webkit-box-shadow:  3px 5px 10px 2px rgba(6, 6, 13, 0.5);
+}
+
+.paddingHeading{
+	padding:5px 10px;
+}
+
+body{
+	height:100%;
+	background:linear-gradient(0deg, rgba(120, 144, 156, 0.5), rgba(120, 144, 156, 0.9)), url("cover.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+	text-align: center;
+
+}
+html{
+	overflow:   scroll;
+	scrollbar-width: none;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+
+}
+
+table > tbody > tr > td:first-child {
+	text-align:right;
+}
+
+</style>
+
+</head>
+<body onload="startup()">
+<a href="/">
+	<h1 class="container paddingHeading" style="padding-left:20px;display: inline-block;">
+	Track the Tracker - The Current State of Web Tracking and its Potential Future
+	</h1>
+</a>
+<br>
+<div class="container paddingMobile" style="top:12px;display:inline-block;">
+	<table>
+	   <tr>
+			<td>Crawl:</td>
+			<td><span id="resCrawl">loading ...</span></td>
+	  </tr>
+	  <tr>
+			<td>Progress:</td>
+			<td><span id="pro" ></span></td>
+	  </tr>
+  	  
+	  <tr>
+			<td>Useragent:</td>
+			<td><span id="useragent"></span></td>
+	  </tr>	 
+	  <tr>
+			<td>Collection:</td>
+			<td><span id="db"></span></td>
+	  </tr>
+	</table>
+</div>
+<script>
+function startup(){
+	
+
+}
+
+	  const ws = new WebSocket('ws://' + document.location.hostname + ':8181');
+
+      // Browser WebSockets have slightly different syntax than `ws`.
+      // Instead of EventEmitter syntax `on('open')`, you assign a callback
+      // to the `onopen` property.
+      ws.onopen = function() {
+		console.log("opened websocket")
+      };
+
+      ws.onmessage = function(msg) {
+        updateData(JSON.parse(msg.data))
+      };
+
+
+function updateData(data){
+		  // console.log(data) 
+		if(data.status) {
+			document.getElementById("resCrawl").innerHTML = "active";
+			document.getElementById("resCrawl").style.color = "green";
+			document.getElementById("pro").innerHTML = data.progress + " of " + data.stop;
+			document.getElementById("useragent").innerHTML = data.useragent;
+			document.getElementById("db").innerHTML = data.dbCollectionName;
+			// document.getElementById("toggle").style.display = "block"; 
+			
+			
+		} else {
+			document.getElementById("resCrawl").innerHTML = "inactive";
+			document.getElementById("resCrawl").style.color = "red";
+			document.getElementById("pro").innerHTML = "";
+			document.getElementById("useragent").innerHTML = ""
+			document.getElementById("db").innerHTML = ""
+			// document.getElementById("toggle").style.display = "none";
+		}
+}
+
+</script>
+</body>
+</html>
